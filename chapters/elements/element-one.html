@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>elements</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      .main-content-container {
+        height: 600px;
+        margin: 20px 80px;
+        display: flex;
+        gap: 30px;
+      }
+      .left-menu {
+        border: 0.1px solid rgba(255, 255, 255, 0.168);
+        flex: 1;
+        padding: 30px 10px;
+        max-height: 600px;
+        overflow-y: auto;
+        display: flex;
+        justify-content: center;
+        scroll-behavior: smooth;
+      }
+      .left-menu ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .left-menu li {
+        margin-bottom: 16px;
+      }
+
+      .left-menu a {
+        text-decoration: none;
+        color: #fbeded;
+      }
+
+      .right-main-content {
+        border: 0.1px solid rgba(255, 255, 255, 0.168);
+        flex: 5;
+        padding: 30px;
+        max-height: 600px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+      .right-main-content p {
+        font-size: 16px;
+        line-height: 2;
+      }
+
+      .left-menu::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .left-menu::-webkit-scrollbar-thumb {
+        background-color: rgba(83, 82, 82, 0.8);
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.2); /* Border around the thumb */
+      }
+      .right-main-content::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .right-main-content::-webkit-scrollbar-thumb {
+        background-color: rgba(83, 82, 82, 0.8);
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.2); /* Border around the thumb */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="logo">
+        <h1><a class="main-logo-link" href="/index.html">thegossips</a></h1>
+      </nav>
+      <div class="heading-menu">
+        <p class="first-heading">elements</p>
+      </div>
+      <div class="main-content-container">
+        <div class="left-menu">
+          <ul>
+            <li><a href="#" data-day="1">Day 1</a></li>
+          </ul>
+        </div>
+        <div class="right-main-content">
+          <p>Select a day to view the content.</p>
+        </div>
+      </div>
+      <footer class="footer">
+        <a class="mail" href="mailto:info@thegossips.in">info@thegossips.in</a>
+        <p>Crafted with curiosity | &copy; 2024 | thegossips</p>
+      </footer>
+    </div>
+
+    <script>
+      const links = document.querySelectorAll(".left-menu a");
+      const content = document.querySelector(".right-main-content");
+      const dayContent = {
+        1: "<h2>Day 1</h2><p>This is the content for Day 1.</p>",
+        2: "<h2>Day 2</h2><p>This is the content for Day 2.</p>",
+      };
+
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const day = e.target.getAttribute("data-day");
+          content.innerHTML =
+            dayContent[day] || "<p>No content available for this day.</p>";
+        });
+      });
+    </script>
+  </body>
+</html>
